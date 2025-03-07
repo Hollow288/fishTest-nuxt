@@ -16,21 +16,21 @@
             <li class="nav-item">
               <NuxtLink class="nav-link" to="/">首页</NuxtLink>
             </li>
-<!--            <li class="nav-item">-->
-<!--              <NuxtLink class="nav-link" to="/about-us">关于我们</NuxtLink>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--              <NuxtLink class="nav-link" to="/portfolio">工程案例</NuxtLink>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--              <NuxtLink class="nav-link" to="/services">涉及业务</NuxtLink>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--              <NuxtLink class="nav-link" to="/blog">资讯中心</NuxtLink>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--              <NuxtLink class="nav-link" to="/contact">联系我们</NuxtLink>-->
-<!--            </li>-->
+            <li class="nav-item">
+              <NuxtLink class="nav-link" to="/about-us">关于我们</NuxtLink>
+            </li>
+            <li class="nav-item">
+              <NuxtLink class="nav-link" to="/portfolio">工程案例</NuxtLink>
+            </li>
+            <li class="nav-item">
+              <NuxtLink class="nav-link" to="/services">涉及业务</NuxtLink>
+            </li>
+            <li class="nav-item">
+              <NuxtLink class="nav-link" to="/blog">资讯中心</NuxtLink>
+            </li>
+            <li class="nav-item">
+              <NuxtLink class="nav-link" to="/contact">联系我们</NuxtLink>
+            </li>
           </ul>
         </div>
       </div>
