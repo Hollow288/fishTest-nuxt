@@ -1,0 +1,56 @@
+
+
+:root {
+  --gap-width: calc((100% - 900px) / 3);
+}
+
+.grid-photo {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
+  grid-column-gap: max(var(--gap-width),30px);
+  grid-row-gap: 30px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+}
+.grid-photo .card {
+  background-color: #ccc;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease;
+  border-radius: 3px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0);
+  overflow: hidden;
+  cursor: pointer;
+}
+.grid-photo .card:hover {
+  -webkit-transform: scale(2);
+          transform: scale(2);
+  z-index: 2;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+.grid-photo .card:hover img {
+  -webkit-filter: grayscale(0);
+          filter: grayscale(0);
+}
+.grid-photo .card .reflection {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  transition: all 0.1s ease;
+  opacity: 0;
+  mix-blend-mode: soft-light;
+}
+.grid-photo .card img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: all 0.3s ease;
+}
