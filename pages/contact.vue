@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- 联系我们内容 -->
     <section class="about-hero-section contact-hero-section ps-3 pe-3 ps-md-0 pe-md-0">
       <div class="container">
         <div class="row justify-content-center">
@@ -14,24 +13,24 @@
       <div class="container">
         <div class="row">
           <div class="d-flex flex-column flex-md-row ps-0 pe-0">
-            <div class="col-lg-6 col-md-6 col-12 icon-box-wrapper ps-md-0 pe-md-3 ps-0 pe-0 wow slideInLeft">
-              <h2 class="text-start mb-3 ps-0 pe-0 wow slideInLeft">Contact Us</h2>
-              <p class="mb-3 wow slideInLeft">感谢您的关注，随时欢迎您的来电或线下光临。也可以输入您的留言，我们会在工作日内尽快回复您的询问。</p>
-              <div class="icon-box-item d-flex col-12 wow slideInLeft" data-wow-duration="1s" data-wow-delay=".1s">
+            <div class="col-lg-6 col-md-6 col-12 icon-box-wrapper ps-md-0 pe-md-3 ps-0 pe-0 slide-in-left">
+              <h2 class="text-start mb-3 ps-0 pe-0 slide-in-left">Contact Us</h2>
+              <p class="mb-3 slide-in-left">感谢您的关注，随时欢迎您的来电或线下光临。也可以输入您的留言，我们会在工作日内尽快回复您的询问。</p>
+              <div class="icon-box-item d-flex col-12 slide-in-left" data-wow-duration="1s" data-wow-delay=".1s">
                 <i class="fa-solid fa-location-dot"></i>
                 <div class="icon-box-text d-flex flex-column align-items-start justify-content-center">
                   <h5>线下地址</h5>
                   <p>15 B-3 Lorem ipsum dolor Bali 80571</p>
                 </div>
               </div>
-              <div class="icon-box-item d-flex col-12 mt-4 wow slideInLeft" data-wow-duration="1s" data-wow-delay=".2s">
+              <div class="icon-box-item d-flex col-12 mt-4 slide-in-left" data-wow-duration="1s" data-wow-delay=".2s">
                 <i class="fa-solid fa-phone"></i>
                 <div class="icon-box-text d-flex flex-column align-items-start justify-content-center">
                   <h5>咨询电话</h5>
                   <a href="tel:+1234567890" class="text-black">+123 456 7890</a>
                 </div>
               </div>
-              <div class="icon-box-item d-flex col-12 mt-4 wow slideInLeft" data-wow-duration="1s" data-wow-delay=".3s">
+              <div class="icon-box-item d-flex col-12 mt-4 slide-in-left" data-wow-duration="1s" data-wow-delay=".3s">
                 <i class="fa-solid fa-envelope"></i>
                 <div class="icon-box-text d-flex flex-column align-items-start justify-content-center">
                   <h5>联系邮箱</h5>
@@ -39,7 +38,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-5 col-md-6 col-12 contact-form-wrap mt-4 mt-md-0 ms-md-3 ms-0 wow slideInRight">
+            <div class="col-lg-5 col-md-6 col-12 contact-form-wrap mt-4 mt-md-0 ms-md-3 ms-0 slide-in-right">
               <h4 class="text-black pb-20">请您留言</h4>
               <p class="mb-3">请填写一下您的信息，我们会尽快和您联系。</p>
               <form class="contact-form col-12" @submit.prevent="submit">
@@ -105,55 +104,44 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'ContactPage',
-  data() {
-    return {
-      formData: {
-        name: '',
-        email: '',
-        phone: '',
-        message: '',
-      },
-      promptInformation: '',
-      loading: false,
-    };
-  },
-  methods: {
-    async submit() {
-      if (!this.formData.name || !this.formData.phone || !this.formData.message) {
-        this.promptInformation = '请按要求填写信息!';
-        return;
-      }
+<script setup>
+import { onMounted, watch } from 'vue'
+import { useRouter } from 'vue-router'
+const { $sr } = useNuxtApp()
+const router = useRouter()
 
-      this.loading = true;
-      try {
-        const response = await this.$axios.post('/common/message-board', this.formData);
-        if (response.code === 200) {
-          this.promptInformation = response.message;
-          this.formData = { name: '', email: '', phone: '', message: '' }; // 清空表单
-        } else {
-          this.promptInformation = response.message;
-        }
-      } catch (error) {
-        this.promptInformation = '服务器繁忙，请稍后重试！';
-      } finally {
-        this.loading = false;
-      }
-    },
-  },
-  mounted() {
-    if (process.client) {
-      new this.$wow.WOW().init(); // 初始化 WOW.js
-    }
-  },
-};
+onMounted(() => {
+  if ($sr) {
+    // 初次加载时初始化动画
+    $sr.reveal('.slide-in-left', {
+      origin: 'left',
+      distance: '50px',
+      duration: 1000,
+      easing: 'ease-out',
+      opacity: 0,
+      reset: false,
+    })
+
+    $sr.reveal('.slide-in-right', {
+      origin: 'right',    // 从右侧滑入
+      distance: '100%',   // 滑入的距离，可以调整
+      duration: 1000,     // 动画持续时间
+      easing: 'ease-out', // 缓动效果
+      opacity: 0,         // 初始透明度
+      reset: false,       // 滚动时是否重复触发
+    })
+
+    $sr.reveal('.slide-in-up', {
+      origin: 'bottom',   // 从下方滑入
+      distance: '100%',   // 滑入的距离，可以调整
+      duration: 1000,     // 动画持续时间
+      easing: 'ease-out', // 缓动效果
+      opacity: 0,         // 初始透明度
+      reset: false,       // 滚动时是否重复触发
+    })
+  }
+})
 </script>
 
 <style scoped>
-/* 样式保持不变 */
-[v-cloak] {
-  display: none;
-}
 </style>

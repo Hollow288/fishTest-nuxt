@@ -10,8 +10,17 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
+    "@fortawesome/fontawesome-free": "^6.7.2",
+    "bootstrap": "^5.3.3",
+    "element-plus": "^2.9.6",
     "nuxt": "^3.15.4",
+    "scrollreveal": "^4.0.9",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "unplugin-auto-import": "^19.1.1",
+    "unplugin-vue-components": "^28.4.1"
   }
 }

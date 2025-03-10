@@ -1,5 +1,43 @@
-<script setup lang="ts">
+<script setup>
+import { Edit } from '@element-plus/icons-vue'
+import { HotWater } from '@element-plus/icons-vue'
+import { Refrigerator } from '@element-plus/icons-vue'
+import { onMounted, watch } from 'vue'
+import { useRouter } from 'vue-router'
+const { $sr } = useNuxtApp()
+const router = useRouter()
 
+onMounted(() => {
+  if ($sr) {
+    // 初次加载时初始化动画
+    $sr.reveal('.slide-in-left', {
+      origin: 'left',
+      distance: '50px',
+      duration: 1000,
+      easing: 'ease-out',
+      opacity: 0,
+      reset: false,
+    })
+
+    $sr.reveal('.slide-in-right', {
+      origin: 'right',    // 从右侧滑入
+      distance: '100%',   // 滑入的距离，可以调整
+      duration: 1000,     // 动画持续时间
+      easing: 'ease-out', // 缓动效果
+      opacity: 0,         // 初始透明度
+      reset: false,       // 滚动时是否重复触发
+    })
+
+    $sr.reveal('.slide-in-up', {
+      origin: 'bottom',   // 从下方滑入
+      distance: '100%',   // 滑入的距离，可以调整
+      duration: 1000,     // 动画持续时间
+      easing: 'ease-out', // 缓动效果
+      opacity: 0,         // 初始透明度
+      reset: false,       // 滚动时是否重复触发
+    })
+  }
+})
 </script>
 
 <template>
@@ -17,10 +55,12 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="section-box d-flex flex-wrap justify-content-center ps-0 pe-0">
-          <div class="col-lg-4 col-md-6 col-12 pe-0 ps-md-3 pe-md-3 wow slideInUp" data-wow-duration="1s" data-wow-delay=".1s">
+          <div class="col-lg-4 col-md-6 col-12 pe-0 ps-md-3 pe-md-3 slide-in-up" data-wow-duration="1s" data-wow-delay=".1s">
             <div class="card">
               <div class="card-title-wrap d-flex align-items-center">
-                <i class="el-icon-edit"></i>
+                <i class="el-icon">
+                  <Edit />
+                </i>
                 <h4 class="card-title mb-0">全屋定制</h4>
               </div>
               <div class="card-body mt-20 p-0">
@@ -37,10 +77,12 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 col-12 pe-0 ps-md-3 pe-md-3 pt-30 pt-md-0 wow slideInUp" data-wow-duration="1s" data-wow-delay=".2s">
+          <div class="col-lg-4 col-md-6 col-12 pe-0 ps-md-3 pe-md-3 pt-30 pt-md-0 slide-in-up" data-wow-duration="1s" data-wow-delay=".2s">
             <div class="card">
               <div class="card-title-wrap d-flex align-items-center">
-                <i class="el-icon-hot-water"></i>
+                <i class="el-icon">
+                  <HotWater />
+                </i>
                 <h4 class="card-title mb-0">整体厨房</h4>
               </div>
               <div class="card-body mt-20 p-0">
@@ -57,10 +99,12 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 col-12 ps-0 ps-md-3 pe-md-3 pt-30 pt-lg-0 wow slideInUp" data-wow-duration="1s" data-wow-delay=".3s">
+          <div class="col-lg-4 col-md-6 col-12 ps-0 ps-md-3 pe-md-3 pt-30 pt-lg-0 slide-in-up" data-wow-duration="1s" data-wow-delay=".3s">
             <div class="card">
               <div class="card-title-wrap d-flex align-items-center">
-                <i class="el-icon-refrigerator"></i>
+                <i class="el-icon">
+                  <Refrigerator />
+                </i>
                 <h4 class="card-title mb-0">厨房电器</h4>
               </div>
               <div class="card-body mt-20 p-0">
@@ -77,7 +121,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 col-12 pe-0 ps-md-3 pe-md-3 pt-30 wow slideInUp" data-wow-duration="1s" data-wow-delay=".4s">
+          <div class="col-lg-4 col-md-6 col-12 pe-0 ps-md-3 pe-md-3 pt-30 slide-in-up" data-wow-duration="1s" data-wow-delay=".4s">
             <div class="card">
               <div class="card-title-wrap d-flex align-items-center">
                 <i class="fa-solid fa-chair"></i>
@@ -97,7 +141,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 col-12 pe-0 ps-md-3 pe-md-3 pt-30 wow slideInUp" data-wow-duration="1s" data-wow-delay=".5s">
+          <div class="col-lg-4 col-md-6 col-12 pe-0 ps-md-3 pe-md-3 pt-30 slide-in-up" data-wow-duration="1s" data-wow-delay=".5s">
             <div class="card">
               <div class="card-title-wrap d-flex align-items-center">
                 <i class="fa-solid fa-bed"></i>
@@ -117,7 +161,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 col-12 ps-0 ps-md-3 pe-md-3 pt-30 wow slideInUp" data-wow-duration="1s" data-wow-delay=".6s">
+          <div class="col-lg-4 col-md-6 col-12 ps-0 ps-md-3 pe-md-3 pt-30 slide-in-up" data-wow-duration="1s" data-wow-delay=".6s">
             <div class="card">
               <div class="card-title-wrap d-flex align-items-center">
                 <i class="fa-solid fa-columns"></i>

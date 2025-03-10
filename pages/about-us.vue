@@ -41,7 +41,7 @@
         <div class="row justify-content-center">
           <h6 class="mb-3 text-center">[ 智能工厂 ]</h6>
           <div class="row professional-box justify-content-center pt-40 ps-0 pe-0">
-            <div class="col-12 col-lg-4 col-md-6 ps-0 pe-0 ps-md-2 pe-md-2 wow slideInUp" data-wow-duration="1s" data-wow-delay=".1s">
+            <div class="col-12 col-lg-4 col-md-6 ps-0 pe-0 ps-md-2 pe-md-2 slide-in-up" data-wow-duration="1s" data-wow-delay=".1s">
               <div class="professional-box-wrap">
                 <div class="professional-box-item">
                   <img src="/picture/our-mission.png" alt="our-mission">
@@ -52,7 +52,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-12 col-lg-4 col-md-6 ps-0 pe-0 ps-md-2 pe-md-2 pt-3 pt-md-0 wow slideInUp" data-wow-duration="1s" data-wow-delay=".2s">
+            <div class="col-12 col-lg-4 col-md-6 ps-0 pe-0 ps-md-2 pe-md-2 pt-3 pt-md-0 slide-in-up" data-wow-duration="1s" data-wow-delay=".2s">
               <div class="professional-box-wrap">
                 <div class="professional-box-item">
                   <img src="/picture/our-mission.png" alt="our-mission">
@@ -63,7 +63,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-12 col-lg-4 col-md-6 ps-0 pe-0 ps-md-2 pe-md-2 pt-3 pt-lg-0 wow slideInUp" data-wow-duration="1s" data-wow-delay=".3s">
+            <div class="col-12 col-lg-4 col-md-6 ps-0 pe-0 ps-md-2 pe-md-2 pt-3 pt-lg-0 slide-in-up" data-wow-duration="1s" data-wow-delay=".3s">
               <div class="professional-box-wrap">
                 <div class="professional-box-item">
                   <img src="/picture/our-mission.png" alt="our-mission">
@@ -81,9 +81,9 @@
 
     <section class="blog-section pt-100 pb-100 ps-3 pe-3 ps-md-0 pe-md-0">
       <div class="container" v-cloak>
-        <div class="row justify-content-center wow slideInUp">
-          <h6 class="mb-3 text-center wow slideInLeft">[ 新闻资讯 ]</h6>
-          <h2 class="text-center mb-3 wow slideInRight" style="font-family: 'AlimamaFangYuanTiVF-Thin', serif">查看我们最新的资讯</h2>
+        <div class="row justify-content-center slide-in-up">
+          <h6 class="mb-3 text-center slide-in-left">[ 新闻资讯 ]</h6>
+          <h2 class="text-center mb-3 slide-in-right" style="font-family: 'AlimamaFangYuanTiVF-Thin', serif">查看我们最新的资讯</h2>
           <span class="about-divider wow zoomIn"></span>
           <div class="blog-wrap pt-40 ps-0 pe-0 d-flex flex-column flex-md-row" v-if="newsInformationList.length > 0">
             <div class="col-md-4 col-12 ps-md-2 pe-md-2 ps-0 pe-0">
@@ -123,40 +123,43 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'AboutUsPage',
-  data() {
-    return {
-      newsInformationList: [],
-      loading: false,
-    };
-  },
-  mounted() {
-    this.fetchNewsInformation();
-    if (process.client) {
-      new this.$wow.WOW().init(); // 初始化 WOW.js
-    }
-  },
-  methods: {
-    async fetchNewsInformation() {
-      this.loading = true;
-      try {
-        const response = await this.$axios.get('/common/news-information-list', {
-          params: {
-            page: 1,
-            pageSize: 3,
-          },
-        });
-        this.newsInformationList = response.data.data;
-      } catch (error) {
-        console.error('Failed to fetch news information:', error);
-      } finally {
-        this.loading = false;
-      }
-    },
-  },
-};
+<script setup>
+import { onMounted, watch } from 'vue'
+import { useRouter } from 'vue-router'
+const { $sr } = useNuxtApp()
+const router = useRouter()
+
+onMounted(() => {
+  if ($sr) {
+    // 初次加载时初始化动画
+    $sr.reveal('.slide-in-left', {
+      origin: 'left',
+      distance: '50px',
+      duration: 1000,
+      easing: 'ease-out',
+      opacity: 0,
+      reset: false,
+    })
+
+    $sr.reveal('.slide-in-right', {
+      origin: 'right',    // 从右侧滑入
+      distance: '100%',   // 滑入的距离，可以调整
+      duration: 1000,     // 动画持续时间
+      easing: 'ease-out', // 缓动效果
+      opacity: 0,         // 初始透明度
+      reset: false,       // 滚动时是否重复触发
+    })
+
+    $sr.reveal('.slide-in-up', {
+      origin: 'bottom',   // 从下方滑入
+      distance: '100%',   // 滑入的距离，可以调整
+      duration: 1000,     // 动画持续时间
+      easing: 'ease-out', // 缓动效果
+      opacity: 0,         // 初始透明度
+      reset: false,       // 滚动时是否重复触发
+    })
+  }
+})
 </script>
 
 <style scoped>

@@ -69,7 +69,7 @@
       </div>
     </div>
     <div class="imgsItem">
-      <img class="wximg goToTopBtn" id="goToTopBtn" data-wow-infinite="true"  src="./static/image/ArrowUp.png"  />
+      <img class="wximg goToTopBtn" id="goToTopBtn" data-wow-infinite="true"  src="/image/ArrowUp.png"  />
     </div>
   </div>
 </template>

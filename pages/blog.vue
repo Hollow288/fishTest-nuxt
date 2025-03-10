@@ -12,7 +12,7 @@
 
     <section class="blog-section pt-100 pb-100 ps-3 pe-3 ps-md-0 pe-md-0">
       <div class="container" v-cloak>
-        <div class="row justify-content-center wow slideInUp">
+        <div class="row justify-content-center slide-in-up">
           <div class="blog-wrap ps-0 pe-0 d-flex flex-md-row flex-wrap">
             <div class="col-md-4 col-12 ps-md-2 pe-md-2 ps-0 pe-0" v-for="(news, index) in newsInformationList" :key="index">
               <div class="card align-content-center">
@@ -42,48 +42,43 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'BlogPage',
-  data() {
-    return {
-      newsInformationList: [],
-      total: 0,
-      currentPage: 1,
-      pageSize: 6,
-      loading: false,
-    };
-  },
-  mounted() {
-    this.fetchNewsInformation();
-    if (process.client) {
-      new this.$wow.WOW().init(); // 初始化 WOW.js
-    }
-  },
-  methods: {
-    async fetchNewsInformation() {
-      this.loading = true;
-      try {
-        const response = await this.$axios.get('/common/news-information-list', {
-          params: {
-            page: this.currentPage,
-            pageSize: this.pageSize,
-          },
-        });
-        this.newsInformationList = response.data.data;
-        this.total = response.data.total;
-      } catch (error) {
-        console.error('Failed to fetch news information:', error);
-      } finally {
-        this.loading = false;
-      }
-    },
-    currentChange(val) {
-      this.currentPage = val;
-      this.fetchNewsInformation();
-    },
-  },
-};
+<script setup>
+import { onMounted, watch } from 'vue'
+import { useRouter } from 'vue-router'
+const { $sr } = useNuxtApp()
+const router = useRouter()
+
+onMounted(() => {
+  if ($sr) {
+    // 初次加载时初始化动画
+    $sr.reveal('.slide-in-left', {
+      origin: 'left',
+      distance: '50px',
+      duration: 1000,
+      easing: 'ease-out',
+      opacity: 0,
+      reset: false,
+    })
+
+    $sr.reveal('.slide-in-right', {
+      origin: 'right',    // 从右侧滑入
+      distance: '100%',   // 滑入的距离，可以调整
+      duration: 1000,     // 动画持续时间
+      easing: 'ease-out', // 缓动效果
+      opacity: 0,         // 初始透明度
+      reset: false,       // 滚动时是否重复触发
+    })
+
+    $sr.reveal('.slide-in-up', {
+      origin: 'bottom',   // 从下方滑入
+      distance: '100%',   // 滑入的距离，可以调整
+      duration: 1000,     // 动画持续时间
+      easing: 'ease-out', // 缓动效果
+      opacity: 0,         // 初始透明度
+      reset: false,       // 滚动时是否重复触发
+    })
+  }
+})
 </script>
 
 <style scoped>

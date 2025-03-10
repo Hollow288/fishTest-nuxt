@@ -11,7 +11,7 @@
     </section>
 
 <!--    <el-container>-->
-<!--      <el-aside width="200px" style="background-color: rgb(238, 241, 246)" class="wow slideInLeft">-->
+<!--      <el-aside width="200px" style="background-color: rgb(238, 241, 246)" class="slide-in-left">-->
 <!--        <h5 style="font-family: 'AlimamaFangYuanTiVF-Thin', serif; text-align: center; background-color: white">产品分类</h5>-->
 <!--        <el-menu v-for="item in menuOptions" :key="item.key" :default-active="chooseOption" active-text-color="#d7926b">-->
 <!--          <el-menu-item @click="menuOnclick(item)" :index="item.key" style="font-family: 'Alibaba-PuHuiTi', serif">-->
@@ -22,7 +22,7 @@
 <!--      <el-main style="overflow-x: hidden">-->
 <!--        <div class="container" style="margin-top: 80px">-->
 <!--          <div class="row" v-loading="loading">-->
-<!--            <div class="grid-photo wow slideInRight">-->
+<!--            <div class="grid-photo slide-in-right">-->
 <!--              <div v-for="item in portFolioList" :key="item.id">-->
 <!--                <a :href="item.panoramaUrl" data-fancybox="gallery">-->
 <!--                  <photo-card :img="item.thumbnailUrl" link=""></photo-card>-->
@@ -47,68 +47,43 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'PortfolioPage',
-  data() {
-    return {
-      menuOptions: [],
-      chooseOption: 'ztcg-code', // 默认选中项
-      portFolioList: [],
-      total: 0,
-      currentPage: 1,
-      pageSize: 8,
-      loading: false,
-    };
-  },
-  methods: {
-    async queryType() {
-      this.loading = true;
-      try {
-        const response = await this.$axios.get('/common/portal-type');
-        this.menuOptions = response.data;
-      } catch (error) {
-        console.error('Failed to fetch menu options:', error);
-      } finally {
-        this.loading = false;
-      }
-    },
-    async queryList() {
-      this.loading = true;
-      try {
-        const response = await this.$axios.get('/common/portal-portfolio', {
-          params: {
-            type: this.chooseOption,
-            page: this.currentPage,
-            pageSize: this.pageSize,
-          },
-        });
-        this.portFolioList = response.data.data;
-        this.total = response.data.total;
-      } catch (error) {
-        console.error('Failed to fetch portfolio list:', error);
-      } finally {
-        this.loading = false;
-      }
-    },
-    menuOnclick(item) {
-      this.currentPage = 1;
-      this.chooseOption = item.key;
-      this.queryList();
-    },
-    currentChange(val) {
-      this.currentPage = val;
-      this.queryList();
-    },
-  },
-  mounted() {
-    this.queryType();
-    this.queryList();
-    if (process.client) {
-      new this.$wow.WOW().init(); // 初始化 WOW.js
-    }
-  },
-};
+<script setup>
+import { onMounted, watch } from 'vue'
+import { useRouter } from 'vue-router'
+const { $sr } = useNuxtApp()
+const router = useRouter()
+
+onMounted(() => {
+  if ($sr) {
+    // 初次加载时初始化动画
+    $sr.reveal('.slide-in-left', {
+      origin: 'left',
+      distance: '50px',
+      duration: 1000,
+      easing: 'ease-out',
+      opacity: 0,
+      reset: false,
+    })
+
+    $sr.reveal('.slide-in-right', {
+      origin: 'right',    // 从右侧滑入
+      distance: '100%',   // 滑入的距离，可以调整
+      duration: 1000,     // 动画持续时间
+      easing: 'ease-out', // 缓动效果
+      opacity: 0,         // 初始透明度
+      reset: false,       // 滚动时是否重复触发
+    })
+
+    $sr.reveal('.slide-in-up', {
+      origin: 'bottom',   // 从下方滑入
+      distance: '100%',   // 滑入的距离，可以调整
+      duration: 1000,     // 动画持续时间
+      easing: 'ease-out', // 缓动效果
+      opacity: 0,         // 初始透明度
+      reset: false,       // 滚动时是否重复触发
+    })
+  }
+})
 </script>
 
 <style scoped>
