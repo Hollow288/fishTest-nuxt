@@ -2,7 +2,7 @@ import { defineNuxtPlugin } from '#app'
 import ScrollReveal from 'scrollreveal'
 
 export default defineNuxtPlugin((nuxtApp) => {
-    if (process.client) {
+    if (import.meta.client) {
         // 初始化 ScrollReveal
         const sr = ScrollReveal()
 
