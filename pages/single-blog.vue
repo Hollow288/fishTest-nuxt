@@ -8,18 +8,20 @@
         </div>
       </div>
     </section>
-
-    <section class="single-blog-section pt-100 pb-100 ps-3 pe-3 ps-md-0 pe-md-0">
+    <div v-if="loading"  style="height: 300px; display: flex; justify-content: center; align-items: center;">
+        加载中...
+    </div>
+    <section v-else class="single-blog-section pt-100 pb-100 ps-3 pe-3 ps-md-0 pe-md-0" >
       <div class="container">
         <div class="row">
           <div class="col-md-2 col-12 p-0"></div>
           <div class="col-md-8 col-12 single-blog-wrap ps-0 pe-0">
-            <img :src="newsInformation.newsCover" alt="apartment-renovation-blog" />
+            <img :src="newsInformation.newsCover" alt="加载中..." />
             <div class="d-flex pt-10 pb-10 flex-column flex-md-row">
               <div class="col-lg-6 col-md-8 col-12 d-flex justify-content-center justify-content-md-start">
                 <div class="pe-3 single-calendar">
                   <i class="fa-solid fa-calendar"></i>
-                  <span style="font-family: 'Alibaba-PuHuiTi', serif">{{ newsInformation.newsDate }}</span>
+                  &nbsp;<span style="font-family: 'Alibaba-PuHuiTi', serif">{{ newsInformation.newsDate }}</span>
                 </div>
               </div>
             </div>
@@ -29,6 +31,7 @@
         </div>
       </div>
     </section>
+
   </main>
 </template>
 
@@ -37,9 +40,11 @@ import { ref, onMounted } from 'vue';
 
 // 定义 newsInformation 状态
 const newsInformation = ref({});
+const loading = ref(true);
 
 // 在组件加载时请求数据
 onMounted(() => {
+  loading.value = true
   const queryList = async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const newsId = urlParams.get('newsId');
@@ -48,12 +53,14 @@ onMounted(() => {
       const response = await fetch(`http://localhost:8999/fish-api/common/news-information?newsId=${newsId}`);
       const data = await response.json();
       newsInformation.value = data.data[0];
+
     } catch (error) {
       console.error('Error fetching data:', error);
     }
-  };
+  }
 
   queryList();
+  loading.value = false
 });
 </script>
 

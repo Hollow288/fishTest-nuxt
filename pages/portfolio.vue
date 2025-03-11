@@ -10,48 +10,99 @@
       </div>
     </section>
 
-<!--    <el-container>-->
-<!--      <el-aside width="200px" style="background-color: rgb(238, 241, 246)" class="slide-in-left">-->
-<!--        <h5 style="font-family: 'AlimamaFangYuanTiVF-Thin', serif; text-align: center; background-color: white">产品分类</h5>-->
-<!--        <el-menu v-for="item in menuOptions" :key="item.key" :default-active="chooseOption" active-text-color="#d7926b">-->
-<!--          <el-menu-item @click="menuOnclick(item)" :index="item.key" style="font-family: 'Alibaba-PuHuiTi', serif">-->
-<!--            {{ item.value + " >" }}-->
-<!--          </el-menu-item>-->
-<!--        </el-menu>-->
-<!--      </el-aside>-->
-<!--      <el-main style="overflow-x: hidden">-->
-<!--        <div class="container" style="margin-top: 80px">-->
-<!--          <div class="row" v-loading="loading">-->
-<!--            <div class="grid-photo slide-in-right">-->
-<!--              <div v-for="item in portFolioList" :key="item.id">-->
-<!--                <a :href="item.panoramaUrl" data-fancybox="gallery">-->
-<!--                  <photo-card :img="item.thumbnailUrl" link=""></photo-card>-->
-<!--                </a>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="row" style="margin-top: 100px; text-align: right">-->
-<!--            <el-pagination-->
-<!--                background-->
-<!--                layout="prev, pager, next"-->
-<!--                :page-size="pageSize"-->
-<!--                :total="total"-->
-<!--                :current-page="currentPage"-->
-<!--                @current-change="currentChange"-->
-<!--                style=".el-pager active: #ffcf40"-->
-<!--            ></el-pagination>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </el-main>-->
-<!--    </el-container>-->
+    <el-container>
+      <el-aside width="200px" style="background-color: rgb(238, 241, 246)" class="slide-in-left">
+        <h5 style="font-family: 'AlimamaFangYuanTiVF-Thin', serif; text-align: center; background-color: white">产品分类</h5>
+        <el-menu v-for="item in menuOptions" :key="item.key" :default-active="chooseOption" active-text-color="#d7926b">
+          <el-menu-item @click="menuOnclick(item)" :index="item.key" style="font-family: 'Alibaba-PuHuiTi', serif">
+            {{ item.value + " >" }}
+          </el-menu-item>
+        </el-menu>
+      </el-aside>
+      <el-main style="overflow-x: hidden">
+        <div class="container" style="margin-top: 80px">
+          <div class="row" v-loading="loading">
+            <div class="grid-photo slide-in-right">
+              <div v-for="item in portFolioList" :key="item.id">
+                <a :href="item.panoramaUrl" data-fancybox="gallery">
+                  <photo-card :img="item.thumbnailUrl" link=""></photo-card>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-end" style="margin-top: 100px; text-align: right">
+            <el-pagination
+                background
+                layout="prev, pager, next"
+                :page-size="pageSize"
+                :total="total"
+                :current-page="currentPage"
+                @current-change="currentChange"
+                class="pagination-right"
+            ></el-pagination>
+          </div>
+        </div>
+      </el-main>
+    </el-container>
   </div>
 </template>
 
 <script setup>
-import { onMounted, watch } from 'vue'
-import { useRouter } from 'vue-router'
+import { onMounted} from 'vue'
 const { $sr } = useNuxtApp()
-const router = useRouter()
+
+
+const menuOptions =  ref([])
+const chooseOption =  ref("")
+const total =  ref(0)
+const currentPage = ref(1)
+const pageSize = ref(8)
+const loading = ref(false)
+const portFolioList = ref([])
+const dataLoaded = ref(false)
+
+
+const queryType = async () => {
+  try {
+    const response = await fetch(`http://localhost:8999/fish-api/common/portal-type`);
+    const data = await response.json();
+    menuOptions.value = data.data
+
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}
+
+
+const queryList = async () => {
+  try {
+    const response = await fetch(`http://localhost:8999/fish-api/common/portal-portfolio?type=${chooseOption.value}&page=${currentPage.value}&pageSize=${pageSize.value}`);
+    const data = await response.json();
+    portFolioList.value = data.data.data
+    total.value = data.data.total
+    loading.value = false
+
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    loading.value = false
+  }
+}
+
+
+const menuOnclick = (item) => {
+  // 回退到第一页
+  currentPage.value = 1;
+  chooseOption.value = item.key;
+  loading.value = true;
+  queryList()
+}
+
+
+const currentChange = (val) =>{
+  currentPage.value = val
+  loading.value = true;
+  queryList()
+}
 
 onMounted(() => {
   if ($sr) {
@@ -83,12 +134,27 @@ onMounted(() => {
       reset: false,       // 滚动时是否重复触发
     })
   }
+
+  currentPage.value = 1;
+  chooseOption.value = 'ztcg-code'
+  total.value = 10;
+  pageSize.value = 8;
+  loading.value = true;
+  queryList()
+  queryType()
 })
 </script>
 
-<style scoped>
-/* 样式保持不变 */
-[v-cloak] {
-  display: none;
+<style>
+
+.fancybox__container {
+  z-index: 8000
 }
+
+.pagination-right {
+  justify-content: flex-end;
+  display: flex;
+}
+
+
 </style>

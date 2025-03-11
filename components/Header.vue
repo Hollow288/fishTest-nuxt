@@ -14,22 +14,22 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <NuxtLink class="nav-link active" to="/">首页</NuxtLink>
+                <NuxtLink class="nav-link" to="/" exact-active-class="active">首页</NuxtLink>
               </li>
               <li class="nav-item">
-                <NuxtLink class="nav-link" to="/about-us">关于我们</NuxtLink>
+                <NuxtLink class="nav-link" to="/about-us" exact-active-class="active">关于我们</NuxtLink>
               </li>
               <li class="nav-item">
-                <NuxtLink class="nav-link" to="/portfolio">工程案例</NuxtLink>
+                <NuxtLink class="nav-link" to="/portfolio" exact-active-class="active">工程案例</NuxtLink>
               </li>
               <li class="nav-item">
-                <NuxtLink class="nav-link" to="/services">涉及业务</NuxtLink>
+                <NuxtLink class="nav-link" to="/services" exact-active-class="active">涉及业务</NuxtLink>
               </li>
               <li class="nav-item">
-                <NuxtLink class="nav-link" to="/blog">资讯中心</NuxtLink>
+                <NuxtLink class="nav-link" to="/blog" exact-active-class="active">资讯中心</NuxtLink>
               </li>
               <li class="nav-item">
-                <NuxtLink class="nav-link" to="/contact">联系我们</NuxtLink>
+                <NuxtLink class="nav-link" to="/contact" exact-active-class="active">联系我们</NuxtLink>
               </li>
             </ul>
           </div>

@@ -124,10 +124,9 @@
 </template>
 
 <script setup>
-import { onMounted, watch } from 'vue'
-import { useRouter } from 'vue-router'
+import { onMounted} from 'vue'
 const { $sr } = useNuxtApp()
-const router = useRouter()
+const newsInformationList = ref([])
 
 onMounted(() => {
   if ($sr) {
@@ -159,6 +158,19 @@ onMounted(() => {
       reset: false,       // 滚动时是否重复触发
     })
   }
+
+  const queryList = async () => {
+    try {
+      const response = await fetch(`http://localhost:8999/fish-api/common/news-information-list?page=1&pageSize=3`);
+      const data = await response.json();
+      newsInformationList.value = data.data.data
+
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  queryList()
 })
 </script>
 

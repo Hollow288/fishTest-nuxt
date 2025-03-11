@@ -51,7 +51,9 @@
             <div class="col-lg-4 col-md-6 col-12 pe-0 ps-md-3 pe-md-3 slide-in-up" data-wow-duration="1s" data-wow-delay=".1s">
               <div class="card">
                 <div class="card-title-wrap d-flex align-items-center">
-                  <i class="el-icon-edit"></i>
+                  <i class="el-icon">
+                    <Edit />
+                  </i>
                   <h4 class="card-title mb-0">全屋定制</h4>
                 </div>
                 <div class="card-body mt-20 p-0">
@@ -68,7 +70,9 @@
             <div class="col-lg-4 col-md-6 col-12 pe-0 ps-md-3 pe-md-3 pt-30 pt-md-0 slide-in-up" data-wow-duration="1s" data-wow-delay=".2s">
               <div class="card">
                 <div class="card-title-wrap d-flex align-items-center">
-                  <i class="el-icon-hot-water"></i>
+                  <i class="el-icon">
+                    <HotWater />
+                  </i>
                   <h4 class="card-title mb-0">整体厨房</h4>
                 </div>
                 <div class="card-body mt-20 p-0">
@@ -138,9 +142,9 @@
 
 <script setup>
 import { onMounted, watch } from 'vue'
-import { useRouter } from 'vue-router'
 const { $sr } = useNuxtApp()
-const router = useRouter()
+import { Edit } from '@element-plus/icons-vue'
+import { HotWater } from '@element-plus/icons-vue'
 
 onMounted(() => {
   if ($sr) {

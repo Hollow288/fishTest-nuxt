@@ -13,24 +13,24 @@
             <h4>服务与支持</h4>
             <ul class="left-menu">
               <li>
-                <a href="" class="active">首页</a>
+                <NuxtLink  to="/" >首页</NuxtLink>
               </li>
               <li>
-                <a href="about-us.html">关于我们</a>
+                <NuxtLink  to="/about-us" >关于我们</NuxtLink>
               </li>
               <li>
-                <a href="portfolio.html">工程案例</a>
+                <NuxtLink  to="/portfolio" >工程案例</NuxtLink>
               </li>
             </ul>
             <ul class="right-menu">
               <li class="mb-10">
-                <a href="services.html">涉及业务</a>
+                <NuxtLink  to="/services" >涉及业务</NuxtLink>
               </li>
               <li class="mb-10">
-                <a href="blog.html">资讯中心</a>
+                <NuxtLink  to="/blog" >资讯中心</NuxtLink>
               </li>
               <li class="mb-10">
-                <a href="contact.html">联系我们</a>
+                <NuxtLink  to="/contact" >联系我们</NuxtLink>
               </li>
             </ul>
           </div>
@@ -145,7 +145,7 @@ onBeforeUnmount(() => {
   right: 30px;
   bottom: 30px;
   transition: transform 0.3s ease;
-  z-index: 998;
+  z-index: 5001;
   flex-direction: column;
 }
 
@@ -155,7 +155,7 @@ onBeforeUnmount(() => {
   display: flex;
   flex-direction: column; /* 将元素垂直排列 */
   margin-bottom: 20px; /* 可以根据需要调整元素之间的间距 */
-  z-index: 999;
+  z-index: 5001;
 }
 
 .footErweimaBox .alertimg {
@@ -172,8 +172,7 @@ onBeforeUnmount(() => {
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
   opacity: 0;
   visibility: hidden;
-  transform: rotateY(-180deg);
-  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
   display: table;
   align-items: center;
 }

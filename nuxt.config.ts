@@ -4,7 +4,8 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   plugins: [
     '~/plugins/bootstrap.client.ts',
-    '~/plugins/scrollreveal.client.ts'
+    '~/plugins/scrollreveal.client.ts',
+    '~/plugins/fancybox.client.ts'
   ],
   css: [
     "bootstrap/dist/css/bootstrap.min.css",
