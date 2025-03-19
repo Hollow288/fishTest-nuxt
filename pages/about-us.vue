@@ -18,12 +18,12 @@
             <span></span>
           </div>
           <div class="about-content col-md-6 col-12 ps-0 pe-0 ps-md-3 pe-md-3 d-flex flex-column align-items-start justify-content-center pt-3 pt-md-0">
-            <h6 class="mb-3">[ 关于艺佳美 ]</h6>
+            <h6 class="mb-3">[ 关于全包圆 ]</h6>
             <h2 class="mb-3" style="font-family: 'AlimamaFangYuanTiVF-Thin', serif">
-              艺佳美橱柜专业从事于整体厨柜及定制家居的设计、生产、销售、安装及售后整体服务
+              全包圆橱柜专业从事于整体厨柜及定制家居的设计、生产、销售、安装及售后整体服务
             </h2>
             <span class="about-divider"></span>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;公司具有多年的橱柜生产和设计经验。公司秉承“精美、专业”的质量意识，不断提高管理水平，建立了严格、科学的管理制度和质量控制流程，达到了同行业的先进水平。 艺佳美橱柜厂拥有专业的生产设备和生产工艺，成品精益求精，本着“创新、时尚”的设计思想，形成了国际化、系列化、专业化、流行化的成品体系。公司自成立以来凭借优异的质量，一流的服务赢得了广大客服朋友的信赖和支持，创造了“艺佳美”品牌的良好声誉。</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;公司具有多年的橱柜生产和设计经验。公司秉承“精美、专业”的质量意识，不断提高管理水平，建立了严格、科学的管理制度和质量控制流程，达到了同行业的先进水平。 全包圆橱柜厂拥有专业的生产设备和生产工艺，成品精益求精，本着“创新、时尚”的设计思想，形成了国际化、系列化、专业化、流行化的成品体系。公司自成立以来凭借优异的质量，一流的服务赢得了广大客服朋友的信赖和支持，创造了“全包圆”品牌的良好声誉。</p>
             <div class="about-list">
               <ul>
                 <li><i class="fa-solid fa-check"></i>专业、专心的服务</li>
@@ -125,8 +125,21 @@
 
 <script setup>
 import { onMounted} from 'vue'
+import { useHead } from '#app'
 const { $sr } = useNuxtApp()
 const newsInformationList = ref([])
+
+
+useHead({
+  htmlAttrs: {
+    lang: 'zh-CN'
+  },
+  title: '关于我们 - 全包圆橱柜',
+  meta: [
+    { name: 'description', content: '全包圆品牌介绍，了解我们的发展历程和设计理念，专注高端橱柜与衣柜定制，成就品质家居生活。' },
+    { name: 'keywords', content: '全包圆橱柜, 橱柜品牌, 衣柜品牌, 家居定制, 公司介绍' }
+  ]
+})
 
 onMounted(() => {
   if ($sr) {

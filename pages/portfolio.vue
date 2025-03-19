@@ -49,6 +49,7 @@
 
 <script setup>
 import { onMounted} from 'vue'
+import { useHead } from '#app'
 const { $sr } = useNuxtApp()
 
 
@@ -60,6 +61,18 @@ const pageSize = ref(8)
 const loading = ref(false)
 const portFolioList = ref([])
 const dataLoaded = ref(false)
+
+
+useHead({
+  htmlAttrs: {
+    lang: 'zh-CN'
+  },
+  title: '工程案例 - 全包圆橱柜',
+  meta: [
+    { name: 'description', content: '全包圆橱柜工程案例展示，涵盖橱柜和衣柜设计效果图，见证高品质家居定制解决方案。' },
+    { name: 'keywords', content: '工程案例, 橱柜案例, 衣柜案例, 成功案例, 家装效果图' }
+  ]
+})
 
 
 const queryType = async () => {

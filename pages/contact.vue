@@ -38,64 +38,8 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-5 col-md-6 col-12 contact-form-wrap mt-4 mt-md-0 ms-md-3 ms-0 slide-in-right">
-<!--              <h4 class="text-black pb-20">请您留言</h4>-->
-<!--              <p class="mb-3">请填写一下您的信息，我们会尽快和您联系。</p>-->
-<!--              <form class="contact-form col-12" @submit.prevent="submit">-->
-<!--                <div class="form-row" v-loading="loading">-->
-<!--                  <div class="form-row d-flex flex-column flex-lg-row">-->
-<!--                    <div class="form-group col-lg-6 col-12 pe-0 pe-lg-2">-->
-<!--                      <input-->
-<!--                          type="text"-->
-<!--                          class="form-control"-->
-<!--                          style="font-family: 'Alibaba-PuHuiTi', serif"-->
-<!--                          maxlength="5"-->
-<!--                          placeholder="姓名(必填)"-->
-<!--                          required-->
-<!--                          v-model="formData.name"-->
-<!--                      />-->
-<!--                    </div>-->
-<!--                    <div class="form-group col-lg-6 col-12 pe-0 pe-lg-2">-->
-<!--                      <input-->
-<!--                          type="email"-->
-<!--                          class="form-control"-->
-<!--                          style="font-family: 'Alibaba-PuHuiTi', serif"-->
-<!--                          maxlength="30"-->
-<!--                          placeholder="邮箱(可选)"-->
-<!--                          v-model="formData.email"-->
-<!--                      />-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                  <div class="form-row col-lg-12">-->
-<!--                    <div class="form-group">-->
-<!--                      <input-->
-<!--                          type="tel"-->
-<!--                          class="form-control"-->
-<!--                          style="font-family: 'Alibaba-PuHuiTi', serif"-->
-<!--                          maxlength="20"-->
-<!--                          placeholder="电话(必填)"-->
-<!--                          required-->
-<!--                          v-model="formData.phone"-->
-<!--                      />-->
-<!--                    </div>-->
-<!--                    <div class="form-group col-md-12">-->
-<!--                      <textarea-->
-<!--                          class="form-control"-->
-<!--                          style="font-family: 'Alibaba-PuHuiTi', serif"-->
-<!--                          maxlength="100"-->
-<!--                          placeholder="在这里写下留言..."-->
-<!--                          required-->
-<!--                          rows="5"-->
-<!--                          v-model="formData.message"-->
-<!--                      ></textarea>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                  <div class="form-group text-start col-12">-->
-<!--                    <button class="btn w-100">提交</button>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <p style="font-size: 15px; color: #bb2d3b; font-family: 'Alibaba-PuHuiTi', serif">{{ promptInformation }}</p>-->
-<!--              </form>-->
+            <div class="col-lg-5 col-md-6 col-12  mt-4 mt-md-0 ms-md-3 ms-0 slide-in-right">
+            <img src="/picture/our-skill.jpg">
             </div>
           </div>
         </div>
@@ -106,7 +50,19 @@
 
 <script setup>
 import { onMounted} from 'vue'
+import { useHead } from '#app'
 const { $sr } = useNuxtApp()
+
+useHead({
+  htmlAttrs: {
+    lang: 'zh-CN'
+  },
+  title: '联系我们 - 全包圆橱柜',
+  meta: [
+    { name: 'description', content: '联系全包圆橱柜团队，了解更多橱柜和衣柜定制服务，欢迎咨询和预约体验，客服热线在线为您服务。' },
+    { name: 'keywords', content: '全包圆, 联系方式, 客服热线, 在线咨询, 客户服务' }
+  ]
+})
 
 onMounted(() => {
   if ($sr) {

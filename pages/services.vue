@@ -1,11 +1,23 @@
 <script setup>
 import { Edit } from '@element-plus/icons-vue'
+import { useHead } from '#app'
 import { HotWater } from '@element-plus/icons-vue'
 import { Refrigerator } from '@element-plus/icons-vue'
 import { onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 const { $sr } = useNuxtApp()
 const router = useRouter()
+
+useHead({
+  htmlAttrs: {
+    lang: 'zh-CN'
+  },
+  title: '涉及业务 - 全包圆橱柜',
+  meta: [
+    { name: 'description', content: '全包圆橱柜业务范围介绍，包括橱柜和衣柜定制、安装及家居设计服务，专业团队助力高端品质打造。' },
+    { name: 'keywords', content: '橱柜定制, 衣柜定制, 家居设计, 橱柜安装, 衣柜安装' }
+  ]
+})
 
 onMounted(() => {
   if ($sr) {

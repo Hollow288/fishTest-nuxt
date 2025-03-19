@@ -5,9 +5,9 @@
       <div class="container">
         <div class="row flex-md-row flex-column-reverse">
           <div class="hero-content col-md-6 col-12 ps-0 pe-0 ps-md-2 pe-md-2 d-flex flex-column justify-content-center align-items-start">
-            <h5 class="mb-3 slide-in-left">欢迎来到艺佳美</h5>
+            <h5 class="mb-3 slide-in-left">欢迎来到全包圆</h5>
             <h1 class="mb-3 slide-in-left" style="font-family: AlimamaFangYuanTiVF-Thin,serif">
-              艺佳美是一家专业从事<span>家具设计开发、现代化加工</span>生产企业
+              全包圆是一家专业从事<span>家具设计开发、现代化加工</span>生产企业
             </h1>
             <p class="slide-in-left">
               本着具有特色富有创意而且非常实用的理念，我们不断地推陈出新，致力于“精品、健康 、低碳、效益”的环保家居事业，为消费者提供性价比最优的人性化家具产品。 在设计开发上注重便捷、高效、舒适性、人性化、实用性； 在产品材料、辅料上严格采用国际标准材、环保材料； 在生产工艺上采用全自动数控加工中心生产线和新工艺，精度更高、工艺更细致、品质更优。斥资更新的生产线杜绝了人工定位会出现的错孔、漏孔现象，既提升了产品品质，又使产能上了一个新台阶。
@@ -31,7 +31,7 @@
             </div>
           </div>
           <div class="about-content col-md-6 col-12 ps-0 pe-0 ps-md-3 pe-md-3 d-flex flex-column align-items-start justify-content-center">
-            <h6 class="mb-3">[ 关于艺佳美 ]</h6>
+            <h6 class="mb-3">[ 关于全包圆 ]</h6>
             <h2 class="mb-3" style="font-family: AlimamaFangYuanTiVF-Thin,serif">专业的家具与室内设计</h2>
             <span class="about-divider"></span>
             <p>拥有现代工业化的生产设备，一流的设计团队，完整、科学的质量管理体系</p>
@@ -141,10 +141,23 @@
 </template>
 
 <script setup>
+import { useHead } from '#app'
 import { onMounted, watch } from 'vue'
 const { $sr } = useNuxtApp()
 import { Edit } from '@element-plus/icons-vue'
 import { HotWater } from '@element-plus/icons-vue'
+
+
+useHead({
+  htmlAttrs: {
+    lang: 'zh-CN'
+  },
+  title: '首页 - 全包圆橱柜',
+  meta: [
+    { name: 'description', content: '全包圆橱柜是整体橱柜、衣柜、板式家具,设计、生产、经营、服务于一体的现代化橱柜供应商。' },
+    { name: 'keywords', content: '全包圆橱柜,整体橱柜,全屋定制,衣柜,木门,厨房电器,整体家居' }
+  ]
+})
 
 onMounted(() => {
   if ($sr) {

@@ -51,7 +51,7 @@
 
 <script setup>
 import {onMounted} from 'vue'
-
+import { useHead } from '#app'
 const {$sr} = useNuxtApp()
 
 const total = ref(0)
@@ -59,6 +59,19 @@ const currentPage = ref(1)
 const pageSize = ref(6)
 const loading = ref(true)
 const newsInformationList = ref([])
+
+
+useHead({
+  htmlAttrs: {
+    lang: 'zh-CN'
+  },
+  title: '资讯中心 - 全包圆橱柜',
+  meta: [
+    { name: 'description', content: '最新家居资讯、装修技巧、橱柜和衣柜定制知识分享，助您掌握最新家居动态和设计趋势。' },
+    { name: 'keywords', content: '家居资讯, 装修技巧, 橱柜知识, 衣柜知识, 行业动态' }
+  ]
+})
+
 
 const queryList = async () => {
   loading.value = true
