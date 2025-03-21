@@ -5,7 +5,7 @@
         <div class="col-md-4 col-sm-4 col-xs-12">
           <div class="content about">
             <h2>全包圆</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita rem eius ratione. Commodi eius magnam</p>
+            <p>全包圆专注于高端橱柜、衣柜定制，提供一站式家居解决方案，设计与品质并重，打造舒适居家体验。</p>
           </div>
         </div>
         <div class="col-md-4 col-sm-4 col-xs-12">
