@@ -39,7 +39,7 @@
               </div>
             </div>
             <div class="col-lg-5 col-md-6 col-12  mt-4 mt-md-0 ms-md-3 ms-0 slide-in-right">
-            <img src="/picture/our-skill.jpg">
+            <img src="/image/our-skill.jpg">
             </div>
           </div>
         </div>

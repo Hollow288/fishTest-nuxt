@@ -14,7 +14,7 @@
       <div class="container">
         <div class="row">
           <div class="about-img col-md-6 col-12 ps-0 pe-0 ps-md-3 pe-md-3 text-center d-flex align-items-center justify-content-center">
-            <img src="/picture/about-image.jpg" alt="about-image">
+            <img src="/image/about-image.jpg" alt="about-image">
             <span></span>
           </div>
           <div class="about-content col-md-6 col-12 ps-0 pe-0 ps-md-3 pe-md-3 d-flex flex-column align-items-start justify-content-center pt-3 pt-md-0">
@@ -44,7 +44,7 @@
             <div class="col-12 col-lg-4 col-md-6 ps-0 pe-0 ps-md-2 pe-md-2 slide-in-up" data-wow-duration="1s" data-wow-delay=".1s">
               <div class="professional-box-wrap">
                 <div class="professional-box-item">
-                  <img src="/picture/our-mission.png" alt="our-mission">
+                  <img src="/image/our-mission.png" alt="our-mission">
                   <h2 class="text-white" style="font-family: 'Alibaba-PuHuiTi', serif">数控开料机</h2>
                 </div>
                 <div class="professional-content">
@@ -55,7 +55,7 @@
             <div class="col-12 col-lg-4 col-md-6 ps-0 pe-0 ps-md-2 pe-md-2 pt-3 pt-md-0 slide-in-up" data-wow-duration="1s" data-wow-delay=".2s">
               <div class="professional-box-wrap">
                 <div class="professional-box-item">
-                  <img src="/picture/our-mission.png" alt="our-mission">
+                  <img src="/image/our-mission.png" alt="our-mission">
                   <h2 class="text-white" style="font-family: 'Alibaba-PuHuiTi', serif">自动封边机</h2>
                 </div>
                 <div class="professional-content">
@@ -66,7 +66,7 @@
             <div class="col-12 col-lg-4 col-md-6 ps-0 pe-0 ps-md-2 pe-md-2 pt-3 pt-lg-0 slide-in-up" data-wow-duration="1s" data-wow-delay=".3s">
               <div class="professional-box-wrap">
                 <div class="professional-box-item">
-                  <img src="/picture/our-mission.png" alt="our-mission">
+                  <img src="/image/our-mission.png" alt="our-mission">
                   <h2 class="text-white" style="font-family: 'Alibaba-PuHuiTi', serif">数控排钻</h2>
                 </div>
                 <div class="professional-content">

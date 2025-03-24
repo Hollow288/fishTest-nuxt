@@ -15,7 +15,7 @@
 <!--            <NuxtLink to="/portfolio" class="btn mt-30 slide-in-left">工程案例 ></NuxtLink>-->
           </div>
           <div class="hero-image col-md-6 col-12 ps-0 pe-0 ps-md-2 pt-md-0 pe-md-2 text-start slide-in-right">
-            <img src="/picture/hero-section-image.png" alt="hero-section-image" class="hero-section-image">
+            <img src="/image/hero-section-image.png" alt="hero-section-image" class="hero-section-image">
           </div>
         </div>
       </div>
@@ -25,9 +25,9 @@
       <div class="container">
         <div class="row">
           <div class="about-img col-md-6 col-12 ps-0 pe-0 ps-md-3 pe-md-3 text-center">
-            <img src="/picture/exterior-design.jpg" alt="exterior-design" class="exterior-design slide-in-left">
+            <img src="/image/exterior-design.jpg" alt="exterior-design" class="exterior-design slide-in-left">
             <div class="text-end slide-in-left">
-              <img src="/picture/fantastic-lnterior.jpg" alt="fantastic-lnterior" class="fantastic-lnterior">
+              <img src="/image/fantastic-lnterior.jpg" alt="fantastic-lnterior" class="fantastic-lnterior">
             </div>
           </div>
           <div class="about-content col-md-6 col-12 ps-0 pe-0 ps-md-3 pe-md-3 d-flex flex-column align-items-start justify-content-center">

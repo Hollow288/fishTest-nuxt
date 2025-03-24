@@ -4,7 +4,7 @@
       <nav class="navbar navbar-expand-lg p-0">
         <div class="container">
           <NuxtLink to="/">
-            <img src="/public/picture/fish-icon.png" width="150" height="65">
+            <img src="/image/fish-icon.png" width="150" height="65">
           </NuxtLink>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                   data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
