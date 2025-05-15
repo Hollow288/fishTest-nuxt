@@ -174,7 +174,7 @@ onMounted(() => {
 
   const queryList = async () => {
     try {
-      const response = await fetch(`http://localhost:8999/fish-api/common/news-information-list?page=1&pageSize=3`);
+      const response = await fetch(`http://fish-test/fish-api/common/news-information-list?page=1&pageSize=3`);
       const data = await response.json();
       newsInformationList.value = data.data.data
 
