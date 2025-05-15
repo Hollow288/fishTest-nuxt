@@ -77,7 +77,7 @@ useHead({
 
 const queryType = async () => {
   try {
-    const response = await fetch(`http://fish-test/fish-api/common/portal-type`);
+    const response = await fetch(`/fish-api/common/portal-type`);
     const data = await response.json();
     menuOptions.value = data.data
 
@@ -89,7 +89,7 @@ const queryType = async () => {
 
 const queryList = async () => {
   try {
-    const response = await fetch(`http://fish-test/fish-api/common/portal-portfolio?type=${chooseOption.value}&page=${currentPage.value}&pageSize=${pageSize.value}`);
+    const response = await fetch(`/fish-api/common/portal-portfolio?type=${chooseOption.value}&page=${currentPage.value}&pageSize=${pageSize.value}`);
     const data = await response.json();
     portFolioList.value = data.data.data
     total.value = data.data.total

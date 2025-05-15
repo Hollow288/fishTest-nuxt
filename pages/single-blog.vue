@@ -61,7 +61,7 @@ onMounted(() => {
     const newsId = urlParams.get('newsId');
 
     try {
-      const response = await fetch(`http://fish-test/fish-api/common/news-information?newsId=${newsId}`);
+      const response = await fetch(`/fish-api/common/news-information?newsId=${newsId}`);
       const data = await response.json();
       newsInformation.value = data.data[0];
 

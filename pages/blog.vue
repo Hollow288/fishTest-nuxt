@@ -76,7 +76,7 @@ useHead({
 const queryList = async () => {
   loading.value = true
   try {
-    const response = await fetch(`http://fish-test/fish-api/common/news-information-list?page=${currentPage.value}&pageSize=${pageSize.value}`);
+    const response = await fetch(`/fish-api/common/news-information-list?page=${currentPage.value}&pageSize=${pageSize.value}`);
     const data = await response.json();
     newsInformationList.value = data.data.data
     total.value = data.data.total
