@@ -5,23 +5,22 @@ FROM node:18-alpine AS build
 WORKDIR /app
 
 # 复制依赖文件
-COPY package.json yarn.lock ./
+COPY package.json pnpm-lock.yaml ./
 
-# 安装依赖（推荐开启 corepack）
-RUN corepack enable && yarn install --frozen-lockfile
+# 开启 corepack，安装依赖
+RUN corepack enable && pnpm install --frozen-lockfile
 
 # 复制项目文件
 COPY . .
 
-# 运行 Nuxt 静态生成（默认输出到 .output/public）
-RUN yarn generate
+# 运行 Nuxt 静态生成，默认输出目录 .output/public
+RUN pnpm generate
 
 # 使用 nginx 镜像托管静态资源
 FROM nginx:stable-alpine
 
 # 拷贝构建好的静态资源
 COPY --from=build /app/.output/public /usr/share/nginx/html
-
 
 EXPOSE 80
 
